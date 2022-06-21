@@ -1,6 +1,6 @@
 .paginadoContainer {
     display: flex;
-    background-color: #fdfdfd ;
+
     justify-content: center;
     align-items: center;
     height: 7vh;
@@ -8,7 +8,7 @@
   
   .ul {
     padding: 0 0 0 0;
-    background-color: #f9f6f6;
+  
     width: 70vw;
     height: 100%;
     display: flex;    

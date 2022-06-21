@@ -2,6 +2,8 @@ import './App.css';
 import {BrowserRouter,Route,Switch }from 'react-router-dom'
 import LandingPage from './components/LandingPage.js'
 import Home from './components/Home'
+import ActivityCreate from './components/ActivityCreate'
+//import Detail from './components/Detail'
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
     <Switch>
       <Route exact path= '/' component={LandingPage}/>
       <Route exact path= '/home' component={Home}/>
+      <Route exact path= '/activity' component={ActivityCreate} />
+      {/* <Route exact path= '/home/:id' component={Detail}/> */}
     </Switch>
     </div>
     </BrowserRouter>

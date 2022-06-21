@@ -91,15 +91,6 @@ router.get('/:idPais', async function (req, res) {
 })
 
 
-
-
-
-
-
-
-
-
-
 // router.get('/',(rec, res, next)=> {
 //  
 //     return Country.findAll()

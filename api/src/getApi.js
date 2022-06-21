@@ -4,8 +4,8 @@ let downloadDB = async () => {
     let country = await axios.get("https://restcountries.com/v3.1/all");
     let api = await country.data.map((c) => {
     return {
-        name: c.translations.spa.official,
-        id: c.cca3,
+        name: c.translations.spa.common,
+        ccid: c.cca3,
         capital: c.capital ? c.capital.toString() : "No capital knowed",
         subregion: c.subregion ? c.subregion : "No subregion knowed",
         area: parseInt(c.area) ? parseInt(c.area) : 0,
@@ -19,7 +19,7 @@ let downloadDB = async () => {
     const push = () => {api.map((i) => {Country.findOrCreate({
         where: {
             name: i.name,
-            id: i.id
+            ccid: i.ccid
         },
             defaults: {
             capital: i.capital,

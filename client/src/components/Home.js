@@ -5,6 +5,7 @@ import { getCountries , FilterCountriesByContinent} from '../actions/index';
 import {Link} from 'react-router-dom'
 import Card from './Card';
 import Paginado from './Paginado';
+import SearchBar from './SearchBar';
 
 export default function Home(){
 
@@ -36,6 +37,16 @@ export default function Home(){
         setCurrentPage(1);
     }
 
+    function handleFilterAtoZ(e){
+        dispatch(getCountries(`?${(e.target.value)}`))
+        setCurrentPage(1);
+    }
+
+    function handleFilterpobAsc(e){
+        dispatch(getCountries(`?${(e.target.value)}`))
+        setCurrentPage(1);
+    }
+
     return(
         <div>
             <Link to = '/counry'><h1> Counties Rules</h1></Link> 
@@ -44,9 +55,16 @@ export default function Home(){
                 Get all countries back
             </button>
             <div>
-                <select>
-                    <option value='asc'>Ascendente</option>
-                    <option value='desc' >Descendente</option>
+                <select onChange={e => handleFilterAtoZ(e)}>
+                    <option value='page=all'>Ordenar</option>
+                    <option value='sort=AtoZ'>Ascendente</option>
+                    <option value='sort=ZtoA'>Descendente</option>
+                </select>
+
+                <select onChange={e => handleFilterpobAsc(e)}>
+                    <option value='page=all'>Ordenar</option>
+                    <option value='sort=pobAsc'>Ascendente</option>
+                    <option value='sort=pobDes'>Descendente</option>
                 </select>
 
                 <select onChange={e => handleFilterContinents(e)}>
@@ -63,6 +81,8 @@ export default function Home(){
                 allCountries={allCountries.length}
                 paginado={paginado} 
                 />
+
+                <SearchBar/>
 
                 {currentCountries?.map( e=> {
                         return(
