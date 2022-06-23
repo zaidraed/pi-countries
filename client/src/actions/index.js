@@ -22,15 +22,19 @@ export function getCountriesByName(name){
         }
     }
 }
-// export function getActivities(activity){
-//     return async function(dispatch){
-//     let info = await axios.get(`http://localhost:3001/api/country?page=all`)
-//     info.data = info.data.filter(data => data.Activities.filter(e=> e.name === activity).lenth)
-//     return dispatch({
-//         type: 'GET_ACTIVITIES',
-//         payload: info.data
-//     })
-// }}
+export function getDetail(id){
+    return async function(dispatch){
+        try{
+            let json = await axios.get(`http://localhost:3001/api/country/${id}`)
+            return dispatch({
+                type: 'GET_DETAIL',
+                payload: json.data
+            })
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
 
 export function postActivities(payload){
     return async function(dispatch){

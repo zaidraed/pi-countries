@@ -49,24 +49,28 @@ export default function Home(){
 
     return(
         <div>
-            <Link to = '/counry'><h1> Counties Rules</h1></Link> 
+            {/* <Link to = '/home'><h1> Counties Rules</h1></Link>  */}
             
             <button onClick={e=>{handleClick(e)}}>
                 Get all countries back
             </button>
+            <Link to= '/activity'><button>Actividades</button></Link>
+            
             <div>
+            <h3>Ordenar</h3>
+                <label>Alfabetico</label>
                 <select onChange={e => handleFilterAtoZ(e)}>
                     <option value='page=all'>Ordenar</option>
                     <option value='sort=AtoZ'>Ascendente</option>
                     <option value='sort=ZtoA'>Descendente</option>
                 </select>
-
+                <label>Poblacion</label>
                 <select onChange={e => handleFilterpobAsc(e)}>
                     <option value='page=all'>Ordenar</option>
                     <option value='sort=pobAsc'>Ascendente</option>
                     <option value='sort=pobDes'>Descendente</option>
                 </select>
-
+                <label>Continente</label>
                 <select onChange={e => handleFilterContinents(e)}>
                     <option value= 'all'>Continente</option>
                     <option value= 'Americas'>America</option>
@@ -86,11 +90,11 @@ export default function Home(){
 
                 {currentCountries?.map( e=> {
                         return(
-                    <div className = 'tarjetas' key={e.id}>
-                    <Link to={'/home/'+e.id}>
+                    <div key={e.ccid}>
+                    <Link to={'/home/'+e.ccid}>
                         <Card 
                         name = {e.name}
-                        key = {e.id}
+                        key = {e.ccid}
                         flags = {e.flags}
                         capital = {e.capital}
                         continents = {e.continents}

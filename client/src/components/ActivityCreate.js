@@ -3,29 +3,11 @@ import { Link, useHistory } from "react-router-dom";
 import {postActivities , getCountries} from '../actions/index'
 import { useDispatch, useSelector } from "react-redux";
 
-function validate(input) {
-    let errors = {};
-    if (!input.name) {
-        errors.name = "Debe completar este campo";
-    } else if (!input.duration) {
-        errors.duration = "Debe completar este campo";
-    } else if (!input.dificulty) {
-        errors.dificulty = "Debe seleccionar la complejidad";
-    } else if (!input.season) {
-        errors.season = "Debe seleccionar una estacion";
-    } else if (input.ccid === []) {
-        errors.id = "Debe seleccionar un pais";
-    }
-    return errors;
-}
-
-
 
     export default function ActionCreate(){
         const dispatch = useDispatch()
         const history = useHistory();
         const countries = useSelector((state) => state.countries)
-        const [errors, setErrors] = useState({});
         const [input, setInput] = useState({
             name: "",
             dificulty: "",
@@ -43,12 +25,6 @@ function validate(input) {
             ...input,
             [e.target.name]: e.target.value,
         });
-        setErrors(
-            validate({
-            ...input,
-            [e.target.name]: e.target.value,
-            })
-        );
         }
     
     function handleDelete(i) {
@@ -99,32 +75,29 @@ function validate(input) {
                                 name= 'name'
                                 onChange={handleChange }
                             />
-                            {errors.name && <p>{errors.name}</p>}
                         </div>
 
                         <div>
                         <label>Duracion</label>
                             <input
-                                type="text"
+                                type="number" min="1" max="365"
                                 value={input.duration}
                                 name="duration"
                                 placeholder="Coloque la Duracion..."
                                 onChange={handleChange}
                             />
-                        {errors.duration && <p>{errors.duration}</p>}
+                            <label>Dias</label>
                         </div>
 
                         <div>
-                            <label>Dificultad:</label>
                             <input
-                                type="range"
+                                type="number"
                                 name="dificulty"
                                 min="1"
                                 max="5"
                                 value={input.dificulty}
                                 onChange={(e) => handleChange(e)}
                             />
-                            {errors.dificulty && <p> {errors.dificulty}</p>}
                         </div>
 
                             <div>
@@ -138,9 +111,7 @@ function validate(input) {
                                 <option value="Spring">Otoño</option>
                                 <option value="Summer">Primavera</option>
                             </select>
-                            {errors.season && <p>{errors.season}</p>}
                         </div>
-                        {errors.id && <p>{errors.id}</p>}
 
                         <div>
                             <select  onChange={(e) => handleSelect(e)}>
