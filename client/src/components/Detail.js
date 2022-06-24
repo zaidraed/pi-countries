@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getDetail } from "../actions";
+import './Detail.css'
 
 export default function Detail(props){
     console.log(props)
@@ -16,13 +17,14 @@ export default function Detail(props){
     const countries = useSelector((state)=> state.detail)
 
 return (
-<div key={countries.ccid}>
+<div className='detailContainer' key={countries.ccid}>
     {
-        <div>
+        <div className='detailContent'>
         <Link to= '/home'><button>Volver</button></Link>
             <h1>Pais {countries.name}</h1>
             <img src={countries.flags} alt='Imagen no encontrada' width='250px' height='175px'></img>
             <h2>Capital: {countries.capital}</h2>
+            <h3>Codigo de pais: {countries.ccid}</h3>
             <p>Continente: {countries.continents}</p>
             <p>Region: {countries.subregion}</p>
             <p>Area: {countries.area}km2</p>

@@ -23,6 +23,15 @@ router.post('/', async (req, res) =>{
         res.status(200).send(createActivity)
     
     })
+    router.get('/', async (req, res) => {
+        const activities = await getActivities()
+        res.status(200).send(activities)
+    })
+
+    const getActivities = async () => {
+        const get = await Activity.findAll()
+        return get;
+    }
 
 
 

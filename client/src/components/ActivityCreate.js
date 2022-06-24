@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {postActivities , getCountries} from '../actions/index'
 import { useDispatch, useSelector } from "react-redux";
-
+import './ActivityCreate.css'
 
     export default function ActionCreate(){
         const dispatch = useDispatch()
-        const history = useHistory();
         const countries = useSelector((state) => state.countries)
         const [input, setInput] = useState({
             name: "",
@@ -54,21 +53,20 @@ import { useDispatch, useSelector } from "react-redux";
             season: "",
             ccid: [],
         });
-        history.push("/home");
     }
     
 
 
         return(
-                <div>
-                    <Link to= '/home'><button>Volver</button></Link>
+                <div className="activityCardContainer">
+                <div className="activityCard">
                     <h1>Crear Una Actividad</h1>
                     <form onSubmit={handleSubmit}>
 
                         <span> Crea una Actividad </span>
                     <div>
                         <label></label>
-                            <input
+                            <input className="i"
                                 type= "text"
                                 placeholder="Escriba la Actividad..."
                                 value= {input.name}
@@ -79,7 +77,7 @@ import { useDispatch, useSelector } from "react-redux";
 
                         <div>
                         <label>Duracion</label>
-                            <input
+                            <input className="i"
                                 type="number" min="1" max="365"
                                 value={input.duration}
                                 name="duration"
@@ -90,7 +88,7 @@ import { useDispatch, useSelector } from "react-redux";
                         </div>
 
                         <div>
-                            <input
+                            <input className="i"
                                 type="number"
                                 name="dificulty"
                                 min="1"
@@ -125,7 +123,7 @@ import { useDispatch, useSelector } from "react-redux";
                         <div>
                             {input.ccid.map((country) => (
                             <div>
-                                <input type='button' value='X' onClick={() => handleDelete(country)}/>
+                                <input className="i" type='button' value='X' onClick={() => handleDelete(country)}/>
                                 <p>{country}</p>
                             </div>
                             ))}
@@ -134,8 +132,10 @@ import { useDispatch, useSelector } from "react-redux";
                         <div>
                             <button type="submit">Crear Actividad</button>
                         </div>
+                        <Link to= '/home'><button>Volver</button></Link>
                     </form>
+                    </div>
                 </div>
         )
-
-}
+        
+    }

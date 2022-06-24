@@ -43,6 +43,28 @@ export function postActivities(payload){
         return response;
     }
 }
+export function getActivities(){
+return async function(dispatch){
+    let json = await axios.get(`http://localhost:3001/api/activity`)
+
+     return dispatch({
+        type: 'GET_ACTIVITIES',
+        payload: json.data
+     })
+    }
+}
+
+        export function filterActivities(payload){
+            return async function(dispatch){
+            let json = await axios.get("http://localhost:3001/api/country?page=all")
+            json.data = json.data.filter(data => data.Activities.filter(a => a.name === payload).length)
+            dispatch({
+                type: 'FILTER_BY_ACTIVITY',
+                payload: json.data })
+        }
+    }
+
+
 
 export function FilterCountriesByContinent(payload){
     return{

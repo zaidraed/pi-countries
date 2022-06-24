@@ -3,7 +3,7 @@ const {Country, Activity,Op} = require('../db');
 const router = Router();
 const {} = require('../getApi')
 
-router.get("/", async (req, res, next) => {
+router.get("/", async function (req, res, next) {
     let { name, page, sort, continents} = req.query
 
     try {
@@ -24,9 +24,9 @@ router.get("/", async (req, res, next) => {
         
         }
         if(page==="all"){
-            let country = await Country.findAll({
-                include: { model: Activity },
-            })
+            let country = await Country.findAll(
+                { include: { model: Activity } },
+            )
             return country ? res.status(200).json(country) : res.sendStatus(404)
         }
         

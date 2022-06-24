@@ -49,6 +49,14 @@ function rootReducer (state = initialState, action){
                 countries: continentFiltered
             }
 
+        case 'FILTER_BY_ACTIVITY':
+            return {
+                ...state,
+                countries: action.payload
+            }
+
+
+
         default:
             return state;
     }
