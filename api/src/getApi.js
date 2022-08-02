@@ -13,6 +13,7 @@ let downloadDB = async () => {
         continents: c.region
         ? c.region.toString(): "No subregion knowed",
         flags: c.flags.png,
+        borders: c.borders? c.borders.toString() : "No border knowed",
     };
     });
   //        console.log(api)
@@ -28,6 +29,7 @@ let downloadDB = async () => {
             population: i.population,
             continents: i.continents,
             flags: i.flags,
+            borders: i.borders
         },
         }).catch((err) => {
         console.log(err);

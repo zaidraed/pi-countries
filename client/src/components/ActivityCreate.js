@@ -84,10 +84,10 @@ import './ActivityCreate.css'
                                 placeholder="Coloque la Duracion..."
                                 onChange={handleChange}
                             />
-                            <label>Dias</label>
                         </div>
 
                         <div>
+                            <label>Dificultad</label>
                             <input className="i"
                                 type="number"
                                 name="dificulty"

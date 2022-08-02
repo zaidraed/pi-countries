@@ -118,7 +118,9 @@ export default function Home(){
                         flags = {e.flags}
                         capital = {e.capital}
                         continents = {e.continents}
-                        population = {e.population}/>
+                        population = {e.population}
+                        borders = {e.borders}
+                        />
                     </Link>
                         </div>
                         );
